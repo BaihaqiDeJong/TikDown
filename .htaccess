@@ -1,0 +1,30 @@
+# Apache .htaccess configuration
+# Redirect all requests to index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect to index.php if not a real file or directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "no-referrer"
+    Header unset X-Powered-By
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|log|md)$">
+    Require all denied
+</FilesMatch>

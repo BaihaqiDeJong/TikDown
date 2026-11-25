@@ -1,0 +1,24 @@
+{
+  "name": "tiktok-downloader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TikTok Downloader MP4 & MP3 (Express + Tailwind + FFmpeg)",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./public/styles.css --minify"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ffmpeg-static": "^5.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
